@@ -1,0 +1,22 @@
+h1 style=("text-align: center;")  Transactions
+table.table.table-striped.table-bordered.table-hover.mt-4
+  thead
+    tr
+      th Uuid
+      th Amount
+      th Status
+      th Customer Email
+      th Customer Phone
+      th Transaction Type
+      th Merchant Name
+  tbody
+    -  @transactions.each do |transaction| 
+      tr
+        td = transaction.uuid 
+        td = transaction.amount 
+        td = transaction.status 
+        td = transaction.customer_email 
+        td = transaction.customer_phone 
+        td = transaction.type.tableize.singularize.titleize 
+        td = transaction.merchant.name 
+      

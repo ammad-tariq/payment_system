@@ -1,0 +1,19 @@
+h1[style="text-align: center;"] Merchants
+table.table.table-striped.table-bordered.table-hover.mt-4
+  thead
+    tr
+      th Name
+      th Description
+      th Email
+      th Status
+      th Role
+      th Total transaction sum
+  tbody
+    - @merchants.each do |merchant|
+      tr
+        td = link_to merchant.name, merchant
+        td = merchant.description
+        td = merchant.email
+        td = merchant.status
+        td = merchant.role
+        td = merchant.total_transaction_sum

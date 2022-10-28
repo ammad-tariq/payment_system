@@ -1,0 +1,38 @@
+= form_with(model: merchant) do |form|
+  - if merchant.errors.any?
+    #error_explanation
+
+    h2
+      = pluralize(merchant.errors.count, "error")
+      |  prohibited this merchant from being saved:
+    ul
+      - merchant.errors.each do |error|
+        li
+          = error.full_message
+  .ms-5.me-5.mt-3
+    .mb-3
+      label.form-label[for="name"]
+        | Name
+      = form.text_field :name ,class: "form-control", placholder: "Name"
+    .mb-3
+      label.form-label[for="exampleFormControlTextarea1"]
+        | Description
+      = form.text_field :description ,class: "form-control"
+    .mb-3
+      label.form-label[for="exampleFormControlTextarea1"]
+        | Email
+      = form.text_field :email ,class: "form-control"
+    .mb-3
+      label.form-label[for="exampleFormControlTextarea1"]
+        | Status
+      = form.select :status , Merchant.statuses.map { |k,v| [k, k]}, {} , class: "form-control form-select"
+    .mb-3
+      label.form-label[for="exampleFormControlTextarea1"]
+        | Role
+      = form.select :role , Merchant.roles.map { |k,v| [k, k]}, {} , class: "form-control form-select"
+    .mb-3
+      label.form-label[for="exampleFormControlTextarea1"]
+        | Total Transaction Sum
+      = form.text_field :total_transaction_sum ,class: "form-control"
+    .actions
+      = form.submit "Submit", class: "btn btn-primary"

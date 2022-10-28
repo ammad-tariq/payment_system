@@ -1,24 +1,53 @@
-# README
+# Payment System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Payment System application.
 
-Things you may want to cover:
+## Development Setup
 
-* Ruby version
+1. Clone the repo:
 
-* System dependencies
+  ```
+  $ git clone git@github.com:SectorLabs/olx-unimog.git
+  $ cd payment_system
+  ```
 
-* Configuration
+2. Install dependencies and prepare database:
 
-* Database creation
+  ```
+  $ ./bin/setup
+  ```
 
-* Database initialization
+3. You're up and running. Just start rails server:
 
-* How to run the test suite
+  ```
+  $ bundle exec bin/rails s
+  ```
 
-* Services (job queues, cache servers, search engines, etc.)
+4. (Optional) For front-end development, webpack-dev-server on a seperate terminal will enable live-reload:
 
-* Deployment instructions
+  ```
+  $ bin/webpack-dev-server
+  ```
 
-* ...
+Notes:
+
+* If you encounter errors, you may need to run `bundle install`, `rails db:migrate` or `yarn install`.
+* Make sure you have PostgreSQL up and running. You can use `ps auxwww | grep postgres` to check if Postgres is running.
+
+
+## Running tests
+
+Payment System is covered with basic functional tests using RSpec, FactoryBot and Capybara. 
+To run the test suite in the `payment_system` directory run:
+  ```
+  Prepare Test Database:
+  $ rails db:test:prepare
+
+  Ruby tests for controllers, models via factories, RAILS_ENV is especially required inside VSCode Remote Dev Environment:
+  $ RAILS_ENV=test rspec spec
+
+  
+  Rubocop:
+  $ rubocop
+
+    ```
